@@ -36,7 +36,7 @@ import (
 	"testing"
 
 	pb "./testdata"
-	. "code.google.com/p/goprotobuf/proto"
+	. "github.com/VividCortex/goprotobuf/proto"
 )
 
 var messageWithExtension1 = &pb.MyMessage{Count: Int32(7)}

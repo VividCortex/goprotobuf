@@ -43,8 +43,8 @@ import (
 	"io/ioutil"
 	"os"
 
-	"code.google.com/p/goprotobuf/proto"
-	"code.google.com/p/goprotobuf/protoc-gen-go/generator"
+	"github.com/VividCortex/goprotobuf/proto"
+	"github.com/VividCortex/goprotobuf/protoc-gen-govc/generator"
 )
 
 func main() {

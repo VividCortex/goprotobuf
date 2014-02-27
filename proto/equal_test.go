@@ -35,7 +35,7 @@ import (
 	"testing"
 
 	pb "./testdata"
-	. "code.google.com/p/goprotobuf/proto"
+	. "github.com/VividCortex/goprotobuf/proto"
 )
 
 // Four identical base messages.
