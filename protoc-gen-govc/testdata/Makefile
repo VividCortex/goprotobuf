@@ -29,12 +29,38 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-include $(GOROOT)/src/Make.inc
+all:
+	@echo run make test
 
-TARG=code.google.com/p/goprotobuf/compiler/generator
-GOFILES=\
-	generator.go\
+include ../../Make.protobuf
 
-DEPS=../descriptor ../plugin ../../proto
+test:	golden testbuild
 
-include $(GOROOT)/src/Make.pkg
+#test:	golden testbuild extension_test
+#	./extension_test
+#	@echo PASS
+
+golden:
+	make -B my_test/test.pb.go
+	diff -w my_test/test.pb.go my_test/test.pb.go.golden
+
+nuke:	clean
+
+testbuild:	buildprotos
+	go test
+
+buildprotos:
+	# Invoke protoc once to generate three independent .pb.go files in the same package.
+	protoc --govc_out=. multi/multi{1,2,3}.proto
+
+#extension_test:	extension_test.$O
+#	$(LD) -L. -o $@ $< 
+
+#multi.a: multi3.pb.$O multi2.pb.$O multi1.pb.$O
+#	rm -f multi.a
+#	$(QUOTED_GOBIN)/gopack grc $@ $<
+
+#test.pb.go:	imp.pb.go
+#multi1.pb.go:	multi2.pb.go multi3.pb.go
+#main.$O: imp.pb.$O test.pb.$O multi.a
+#extension_test.$O: extension_base.pb.$O extension_extra.pb.$O extension_user.pb.$O

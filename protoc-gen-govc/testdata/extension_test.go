@@ -40,7 +40,7 @@ import (
 	"regexp"
 	"testing"
 
-	"code.google.com/p/goprotobuf/proto"
+	"github.com/VividCortex/goprotobuf/proto"
 	base "extension_base.pb"
 	user "extension_user.pb"
 )

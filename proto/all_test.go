@@ -44,7 +44,7 @@ import (
 	"time"
 
 	. "./testdata"
-	. "code.google.com/p/goprotobuf/proto"
+	. "github.com/VividCortex/goprotobuf/proto"
 )
 
 var globalO *Buffer
